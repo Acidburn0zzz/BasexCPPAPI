@@ -2,9 +2,9 @@ CXX=g++
 RM=rm -f
 CPPFLAGS=
 LDFLAGS=
-LDLIBS=-lboost_system -lpugixml
+LDLIBS=-lboost_system -lpugixml -lpthread
 
-SRCS=BaseXExample.cpp
+SRCS=BaseXExample.cpp md5.c
 OBJS=$(subst .cc,.o,$(SRCS))
 
 all: BaseXExample
@@ -12,7 +12,7 @@ all: BaseXExample
 BaseXExample: $(OBJS)
 	g++ $(LDFLAGS) -o BaseXExample $(OBJS) $(LDLIBS) 
 
-BaseXExample.o: BaseXExample.cpp BasexExample.h
+BaseXExample.o: BaseXExample.cpp BaseXExample.h BaseXClient.h
 
 clean:
 	$(RM) BaseXExample
