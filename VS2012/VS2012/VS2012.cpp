@@ -44,8 +44,24 @@ struct my_int_list_interface : public BaseXInterface<my_int_list>
 	};
 };
 
-int _tmain(int argc, _TCHAR* argv[])
+int test_pugixml()
 {
-	return 0;
-}
+	cout << "----------test_pugi--------------- "<< endl;
+	std::string DBHOST("127.0.0.1");
+	std::string DBPORT("1984");
+	std::string DBUSER("admin");
+	std::string DBPASSWD("admin");
+    my_int_list_interface list_interface(DBHOST,DBPORT,DBUSER,DBPASSWD);
+	my_int_list list_ = list_interface.get();
+	BOOST_FOREACH(int i, list_) {
+		cout << "value : "<< i << endl;
+	};
 
+    return 0;
+};
+
+int main() {
+	cout << "Hello World!!!" << endl; // prints !!!Hello World!!!
+	::test_pugixml();
+	return 0;
+};

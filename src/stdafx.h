@@ -15,10 +15,6 @@
 
 #pragma once
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-#define _WIN32_WINNT WINVER
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
 #include <string>
 #include <bitset>
 #include <locale>

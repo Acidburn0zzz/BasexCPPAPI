@@ -92,6 +92,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\md5.c" />
+    <ClCompile Include="..\..\src\pugi\src\pugixml.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="VS2012.cpp" />
   </ItemGroup>
