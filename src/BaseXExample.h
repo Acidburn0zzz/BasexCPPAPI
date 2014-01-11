@@ -12,9 +12,9 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "BasexClient.h"
-#include "BasexInterface.h"
-#include "pugi/src/pugixml.hpp"
+#include "BaseXClient.h"
+#include "BaseXInterface.h"
+#include "pugixml.hpp"
 
 int test_pugi();
 
