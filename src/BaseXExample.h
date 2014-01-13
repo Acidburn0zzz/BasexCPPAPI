@@ -14,7 +14,7 @@
 #include <list>
 #include "BaseXClient.h"
 #include "BaseXInterface.h"
-#include "pugixml.hpp"
+#include "pugi/src/pugixml.hpp"
 
 int test_pugi();
 

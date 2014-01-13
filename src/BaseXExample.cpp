@@ -30,7 +30,6 @@ struct my_int_list_interface : public BaseXInterface<my_int_list>
 		pugi::xml_parse_result parse_;
 		pugi::xml_document doc;
 		std::string results = session().execute("XQUERY <list>{for $i in 1 to 10 return <i>{$i}</i>}</list>");
-    std::cout << "Result: " << results << std::endl;
 		parse_ = doc.load(results.c_str());
 
 		std::cout << "Load XML Input File : " << parse_.description() << std::endl;
@@ -38,7 +37,7 @@ struct my_int_list_interface : public BaseXInterface<my_int_list>
 		pugi::xpath_node_set is = doc.select_nodes("/list/i");
 		for (pugi::xpath_node_set::const_iterator it = is.begin(); it != is.end(); ++it)
 		{
-			//my_int_list_.push_back(it->node().text().as_int());
+      my_int_list_.push_back(it->node().text().as_int());
 		};
 
 		return my_int_list_;
