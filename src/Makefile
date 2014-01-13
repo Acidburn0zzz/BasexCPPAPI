@@ -2,9 +2,9 @@ CXX=g++
 RM=rm -f
 CPPFLAGS=
 LDFLAGS=
-LDLIBS=-lboost_system -lpugixml -lpthread
+LDLIBS=-lboost_system -lpthread
 
-SRCS=BaseXExample.cpp md5.c
+SRCS=BaseXExample.cpp pugi/src/pugixml.cpp md5.c
 OBJS=$(subst .cc,.o,$(SRCS))
 
 all: BaseXExample
