@@ -12,16 +12,30 @@
  : See the License for the specific language governing permissions and
  : limitations under the License.
 */
-#include "stdafx.h"
-using namespace std;
+#pragma once
+#include "BaseXClient.h"
+#include "pugi/src/pugixml.hpp"
+
 using namespace BaseXClient;
+
+template<class structure>
+class BaseX_XMLInterface{
+public :
+	typedef structure type;
+	typedef BaseX_XMLInterface<structure> base_type;
+	Session& session(){return BaseXSession_;};
+	BaseX_XMLInterface(const Session& BaseXSession) : BaseXSession_(BaseXSession) {};
+	BaseX_XMLInterface(const std::string& DBHOST, const std::string& DBPORT, const std::string& DBUSER,const std::string& DBPASSWD) : BaseXSession_(DBHOST,DBPORT,DBUSER,DBPASSWD) {};
+	virtual type get()=0; // must be overloaded
+private :
+		Session BaseXSession_;
+};
 
 struct my_int_list : std::list<int>
 {};
 
-struct my_int_list_interface : public BaseXInterface<my_int_list>
+struct my_int_list_interface : public BaseX_XMLInterface<my_int_list>
 {
-	typedef BaseXInterface<my_int_list> base_type;
 	virtual ~my_int_list_interface(){};
 
 	my_int_list_interface(const std::string& DBHOST, const std::string& DBPORT, const std::string& DBUSER,const std::string& DBPASSWD)  : base_type(DBHOST,DBPORT,DBUSER,DBPASSWD) {};
@@ -42,26 +56,4 @@ struct my_int_list_interface : public BaseXInterface<my_int_list>
 
 		return my_int_list_;
 	};
-};
-
-int test_pugixml()
-{
-	cout << "----------test_pugi--------------- "<< endl;
-	std::string DBHOST("127.0.0.1");
-	std::string DBPORT("1984");
-	std::string DBUSER("admin");
-	std::string DBPASSWD("admin");
-    my_int_list_interface list_interface(DBHOST,DBPORT,DBUSER,DBPASSWD);
-	my_int_list list_ = list_interface.get();
-	BOOST_FOREACH(int i, list_) {
-		cout << "value : "<< i << endl;
-	};
-
-    return 0;
-};
-
-int main() {
-	cout << "Hello World!!!" << endl; // prints !!!Hello World!!!
-	::test_pugixml();
-	return 0;
 };

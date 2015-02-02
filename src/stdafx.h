@@ -15,26 +15,6 @@
 
 #pragma once
 
-#include <string>
-#include <bitset>
-#include <locale>
-#include <iostream>
-#include <iomanip>
-#include <boost/asio.hpp>
-#include <boost/array.hpp>
-#include <boost/bind.hpp>
-#include <boost/tokenizer.hpp>
-#include <boost/foreach.hpp>
-#include "md5.h"
-
-// #include <SDKDDKVer.h>
 #include <stdio.h>
-// #include <tchar.h>
-
 #include "BaseXInterface.h"
-#include "BaseXClient.h"
-#include "BaseXExample.h"
 
-
-// TODO: faites référence ici aux en-têtes supplémentaires nécessaires au programme
-int test_pugixml();
