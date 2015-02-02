@@ -28,6 +28,8 @@ public :
 	BaseXInterface(const std::string& DBHOST, const std::string& DBPORT, const std::string& DBUSER,const std::string& DBPASSWD) : BaseXSession_(DBHOST,DBPORT,DBUSER,DBPASSWD) {};
 	BaseXInterface() : BaseXSession_("127.0.0.1","1984","admin","admin") {};
 	std::string execute(const std::string& query){return session().execute(query);}
+	std::string info(){ return session().info(); }
+	void close(){ return session().close(); }
 
 protected :
 	BaseXSession BaseXSession_;
